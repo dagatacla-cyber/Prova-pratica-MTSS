@@ -1,18 +1,28 @@
-steps:
-  - uses: actions/checkout@v3
+name: CI
 
-  - name: Set up JDK 17
-    uses: actions/setup-java@v3
-    with:
-      distribution: 'temurin'
-      java-version: '17'
-      cache: 'maven'
+on:
+  push:
+  pull_request:
 
-  - name: Compile project
-    run: cd roman-number && mvn compile
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-  - name: Run unit tests
-    run: cd roman-number && mvn test
+    steps:
+      - uses: actions/checkout@v3
 
-  - name: Run static analysis
-    run: cd roman-number && mvn package
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
+      - name: Compile project
+        run: mvn compile
+
+      - name: Run unit tests
+        run: mvn test
+
+      - name: Run static analysis
+        run: mvn package
