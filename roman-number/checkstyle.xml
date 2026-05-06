@@ -17,7 +17,7 @@
   </module>
 
   <module name="RegexpHeader">
-    <property name="headerFile" value="${header.txt}"/>
+    <property name="headerFile" value="header.txt"/>
   </module>
 
   <module name="TreeWalker">
