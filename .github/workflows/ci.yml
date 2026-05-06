@@ -1,4 +1,4 @@
-name: CI
+name: Continuous Integration
 
 on:
   push:
@@ -19,10 +19,10 @@ jobs:
           cache: 'maven'
 
       - name: Compile project
-        run: mvn compile
+        run: cd roman-number && mvn compile
 
       - name: Run unit tests
-        run: mvn test
+        run: cd roman-number && mvn test
 
       - name: Run static analysis
-        run: mvn package
+        run: cd roman-number && mvn package
