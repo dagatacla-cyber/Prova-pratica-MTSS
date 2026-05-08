@@ -108,11 +108,36 @@ public class AraboRomanoASCIITest {
     }
 
 
-    // test di un caso concomplesso: più regole di combinazione
+    // test con più regole di combinazione
+
+    @Test
+    void input_49_output_XLIX() {
+        assertEquals("XLIX", AraboRomanoASCII.convert(49));
+    }
+
+    @Test
+    void input_99_output_XCIX() {
+        assertEquals("XCIX", AraboRomanoASCII.convert(99));
+    }
 
     @Test
     void input_1994_output_MCMXCIV() {
         assertEquals("MCMXCIV", AraboRomanoASCII.convert(1994));
     }
+
+    // test di input non validi
+
+        @Test
+    void input_0_throws_exception() {
+        assertThrows(IllegalArgumentException.class,
+            () -> AraboRomanoASCII.convert(0));
+    }
+
+    @Test
+    void input_negative_throws_exception() {
+        assertThrows(IllegalArgumentException.class,
+            () -> AraboRomanoASCII.convert(-5));
+    }
+    
 
 }
