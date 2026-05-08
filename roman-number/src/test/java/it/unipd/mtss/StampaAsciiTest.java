@@ -147,4 +147,58 @@ public class StampaAsciiTest {
         assertTrue(result.contains("\\/"));
 
     }
+
+
+    // test di stringhe composte da più simboli
+
+    @Test
+    public void stampa_XL() {
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        AraboRomanoASCII.stampaAscii("XL");
+
+        String result = output.toString();
+
+        assertTrue(result.contains("__   __")); // X
+        assertTrue(result.contains("| |____")); // L
+    }
+
+    @Test
+    public void stampa_MCMXCIV() {
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        AraboRomanoASCII.stampaAscii("MCMXCIV");
+
+        String result = output.toString();
+
+        assertTrue(result.contains("__  __")); // M
+        assertTrue(result.contains("_____"));  // C/I
+        assertTrue(result.contains("__   __")); // X
+    }
+
+
+    // test input non valido
+
+    @Test
+    public void stampa_stringa_vuota() {
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        AraboRomanoASCII.stampaAscii("");
+
+        String result = output.toString();
+
+        assertEquals("", result.trim());
+    }
+
+    @Test
+    public void stampa_null_lancia_eccezione() {
+        assertThrows(NullPointerException.class,
+            () -> AraboRomanoASCII.stampaAscii(null));
+    }
 }
