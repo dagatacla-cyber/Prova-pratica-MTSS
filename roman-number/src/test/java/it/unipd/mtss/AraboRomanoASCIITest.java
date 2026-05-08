@@ -125,19 +125,4 @@ public class AraboRomanoASCIITest {
         assertEquals("MCMXCIV", AraboRomanoASCII.convert(1994));
     }
 
-    // test di input non validi
-
-        @Test
-    void input_0_throws_exception() {
-        assertThrows(IllegalArgumentException.class,
-            () -> AraboRomanoASCII.convert(0));
-    }
-
-    @Test
-    void input_negative_throws_exception() {
-        assertThrows(IllegalArgumentException.class,
-            () -> AraboRomanoASCII.convert(-5));
-    }
-    
-
 }

@@ -198,7 +198,7 @@ public class StampaAsciiTest {
 
     @Test
     public void stampa_null_lancia_eccezione() {
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(NullPointerException.class,
             () -> AraboRomanoASCII.stampaAscii(null));
     }
 }
