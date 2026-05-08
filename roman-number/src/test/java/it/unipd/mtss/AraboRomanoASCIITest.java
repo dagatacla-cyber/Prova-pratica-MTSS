@@ -6,6 +6,8 @@ package it.unipd.mtss;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class AraboRomanoASCIITest {
 
@@ -124,5 +126,22 @@ public class AraboRomanoASCIITest {
     void input_1994_output_MCMXCIV() {
         assertEquals("MCMXCIV", AraboRomanoASCII.convert(1994));
     }
+
+
+    //TEST DEL MAIN
+    @Test
+    public void test_main() {
+
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(output));
+
+    AraboRomanoASCII.main(new String[]{});
+
+    String result = output.toString();
+
+    assertTrue(result.contains("1 -> I"));
+    assertTrue(result.contains("1000 -> M"));
+}
+    
 
 }
